@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقارير المنتجات</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input, button {
+            margin: 5px 0;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        #reportContainer {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>تقرير المنتجات</h1>
+
+    <label>من:</label>
+    <input type="datetime-local" id="startDate"><br>
+
+    <label>إلى:</label>
+    <input type="datetime-local" id="endDate"><br>
+
+    <button onclick="generateReport()">إنشاء تقرير</button>
+
+    <div id="reportContainer">
+        <h2>التقرير</h2>
+        <div id="reportContent"></div>
+        <button onclick="downloadPDF()">تحميل PDF</button>
+        <button onclick="printReport()">طباعة التقرير</button>
+    </div>
+
+    <script src="js.js"></script>
+</body>
+</html>
